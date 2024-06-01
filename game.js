@@ -21,6 +21,7 @@ class Game {
       this.activateRestart  = false
       this.button = createButton("enviar")
       inputField = createInput('tu_correo@massa.com')
+      this.canplay = 0
 
   }
 
@@ -71,7 +72,7 @@ class Game {
 
   draw() {
 
-
+this.canplay++
     if (this.activateRestart) {
       this.fadeRestart++
         if (this.fadeRestart >= 255) {
@@ -327,12 +328,13 @@ class Game {
 
   mouseClicked() {
 
-    if (this.gState == 0) {
+    if (this.gState == 0 && this.canplay > 180) {
+      this.canplay  = 0
       this.clickOnMenu()
     }
 
-    if ( this.gState == 1) {
-
+    if ( this.gState == 1 && this.canplay > 180) {
+this.canplay = 0
       this.clickOnPlay()
     }
   }
