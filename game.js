@@ -158,8 +158,7 @@ class Game {
       this.activateRestart = false
       this.fadeRestart = 0
       this.randomCircle = this.calculateRandom()
-      inputField.position(width, height)
-      this.button.position(width, height)
+
   }
 
   addMail() {
