@@ -328,12 +328,12 @@ this.canplay++
 
   mouseClicked() {
 
-    if (this.gState == 0 && this.canplay > 180) {
+    if (this.gState == 0 && this.canplay > 60) {
       this.canplay  = 0
       this.clickOnMenu()
     }
 
-    if ( this.gState == 1 && this.canplay > 180) {
+    if ( this.gState == 1 && this.canplay > 60) {
 this.canplay = 0
       this.clickOnPlay()
     }
