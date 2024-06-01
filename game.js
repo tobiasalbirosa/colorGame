@@ -19,8 +19,9 @@ class Game {
       this.buttonMenuW = 0
       this.fadeRestart = 0
       this.activateRestart  = false
-
       this.canplay = 0
+           this.button = createButton("enviar")
+                inputField = createInput('tu_correo@massa.com')
   }
 
   calculateRandom() {
@@ -115,7 +116,7 @@ class Game {
       fill(255, 0, 0, this.fadeRestart)
       rect(0, 0, width, height)
       fill(255, this.fadeRestart)
-      textSize(12)
+      textSize(6)
       textAlign(CENTER, CENTER)
       text(":( ¡PERDISTE!", width/2, height/2)
       text("Gracias por jugar,", width/2, height/2+24)
@@ -133,7 +134,7 @@ class Game {
       rect(0, 0, width, height)
       fill(255)
 
-      textSize(12)
+      textSize(6)
 
       textAlign(CENTER, CENTER)
 
@@ -158,6 +159,10 @@ class Game {
       this.activateRestart = false
       this.fadeRestart = 0
       this.randomCircle = this.calculateRandom()
+     console.log("inputs:",inputs[0])
+     inputs[0].style.display = "none"
+     buttons[0].style.display = "none"
+
 
   }
 
@@ -216,7 +221,7 @@ class Game {
       textAlign(CENTER, CENTER)
       fill(0, 0, 255)
       rect(width/2, height - height/10, width/4, height/20, 180)
-      textSize(32)
+      textSize(16)
       fill(255)
       textFont(bFont)
       fill(0)
@@ -301,14 +306,20 @@ class Game {
 
           if (countOnClick == this.randomCircle) {
             this.lvl++
-              if (this.lvl >= 12) {
+              if (this.lvl >= 3) {
+                   inputs = document.getElementsByTagName("input")
+                   buttons = document.getElementsByTagName("button")
+                   
+                   console.log(buttons)
               this.gState = 2
                 this.activateRestart = true
-                this.button = createButton("enviar")
-                inputField = createInput('tu_correo@massa.com')
+           
                 inputField.position(width/3, height/1.5)
                 this.button.position(inputField.x+inputField.width, height/1.5)
                 this.button.mousePressed(this.addMail)
+                
+               inputs[0].style.display = "block"
+                 buttons[0].style.display = "block"
             } else {
               this.calculateRandom()
             }

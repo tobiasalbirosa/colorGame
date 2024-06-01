@@ -1,4 +1,4 @@
-let game, menu, font, bFont, logo, logoSimple, inputField
+let game, menu, font, bFont, logo, logoSimple, inputField, inputs, buttons
   function preload() {
     menu = loadImage('assets/menu.png')
     logo = loadImage('assets/logo.png')
