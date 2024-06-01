@@ -2,8 +2,8 @@ class Game {
 
   constructor() {
 
-      this.animation = new Animation()
-    this.gState = 0
+    this.animation = new Animation()
+      this.gState = 0
       this.lvl  = 1
       this.div = 3
       this.life = 1
@@ -19,10 +19,8 @@ class Game {
       this.buttonMenuW = 0
       this.fadeRestart = 0
       this.activateRestart  = false
-      this.button = createButton("enviar")
-      inputField = createInput('tu_correo@massa.com')
-      this.canplay = 0
 
+      this.canplay = 0
   }
 
   calculateRandom() {
@@ -72,8 +70,8 @@ class Game {
 
   draw() {
 
-this.canplay++
-    if (this.activateRestart) {
+    this.canplay++
+      if (this.activateRestart) {
       this.fadeRestart++
         if (this.fadeRestart >= 255) {
         if (this.gState != 2) {
@@ -117,7 +115,7 @@ this.canplay++
       fill(255, 0, 0, this.fadeRestart)
       rect(0, 0, width, height)
       fill(255, this.fadeRestart)
-      textSize(24)
+      textSize(12)
       textAlign(CENTER, CENTER)
       text(":( ¡PERDISTE!", width/2, height/2)
       text("Gracias por jugar,", width/2, height/2+24)
@@ -135,7 +133,7 @@ this.canplay++
       rect(0, 0, width, height)
       fill(255)
 
-      textSize(24)
+      textSize(12)
 
       textAlign(CENTER, CENTER)
 
@@ -143,16 +141,14 @@ this.canplay++
       text("Gracias por jugar.", width/2, height/2+24)
       text("Deja tu correo para contactarnos", width/2, height/2+48)
 
-      inputField.position(width/2, height/1.5)
-      this.button.position(width/2 + 150, height/1.5)
-      this.button.mousePressed(this.addMail)
+
 
       pop()
   }
 
   restart() {
 
-      this.gState = 0
+    this.gState = 0
       this.lvl  = 1
       this.div = 3
       this.life = 1
@@ -167,12 +163,12 @@ this.canplay++
   }
 
   addMail() {
-   //
-     let val = inputField.value()
-     //console.log(document.getElementsByTagName['input'][0])
-    //  alert(this.input.value())
+    //
+    let val = inputField.value()
+      //console.log(document.getElementsByTagName['input'][0])
+      //  alert(this.input.value())
       saveJSON(val, 'mail.json', true)
-     game.restart()
+      game.restart()
   }
   drawGame() {
 
@@ -221,7 +217,7 @@ this.canplay++
       textAlign(CENTER, CENTER)
       fill(0, 0, 255)
       rect(width/2, height - height/10, width/4, height/20, 180)
-      textSize(64)
+      textSize(32)
       fill(255)
       textFont(bFont)
       fill(0)
@@ -277,12 +273,12 @@ this.canplay++
 
     background(0)
 
-     // image(menu, width/2, height/2, width, height)
+      // image(menu, width/2, height/2, width, height)
 
       push()
-        this.animation.playAnimation()
-    //  fill(0, 0, 255)
-    //  this.menuButtonAnimation()
+      this.animation.playAnimation()
+      //  fill(0, 0, 255)
+      //  this.menuButtonAnimation()
 
       pop()
 
@@ -290,7 +286,7 @@ this.canplay++
   }
 
   clickOnMenu () {
-    if (mouseY < height/3) {
+    if (dist(mouseX, mouseY, this.animation.initialXCircle, height/2) < this.animation.sizeCircle/2) {
       this.gState = 1
     }
   }
@@ -306,9 +302,14 @@ this.canplay++
 
           if (countOnClick == this.randomCircle) {
             this.lvl++
-              if (this.lvl >= 12) {
+              if (this.lvl >= 3) {
               this.gState = 2
                 this.activateRestart = true
+                this.button = createButton("enviar")
+                inputField = createInput('tu_correo@massa.com')
+                inputField.position(width/3, height/1.5)
+                this.button.position(inputField.x+inputField.width, height/1.5)
+                this.button.mousePressed(this.addMail)
             } else {
               this.calculateRandom()
             }
@@ -328,14 +329,15 @@ this.canplay++
 
   mouseClicked() {
 
-    if (this.gState == 0 && this.canplay > 60) {
+      if (this.gState == 0 && this.canplay > 30) {
       this.canplay  = 0
-      this.clickOnMenu()
+        this.clickOnMenu()
     }
 
-    if ( this.gState == 1 && this.canplay > 60) {
-this.canplay = 0
-      this.clickOnPlay()
+    if ( this.gState == 1 && this.canplay > 30) {
+      this.canplay = 0
+
+        this.clickOnPlay()
     }
   }
 }
