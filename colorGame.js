@@ -1,18 +1,16 @@
-let game, menu, font, bFont, logo, inputField
-function preload() {
-  inputField = createInput('tu_correo@massa.com')
-  menu = loadImage('assets/menu.png')
-  logo = loadImage('assets/logo.png')
-  font = loadFont('assets/acidgroteskregular.otf')
-  bFont = loadFont('assets/acidgroteskbold.otf')
-
+let game, menu, font, bFont, logo, logoSimple, inputField
+  function preload() {
+    menu = loadImage('assets/menu.png')
+    logo = loadImage('assets/logo.png')
+    logoSimple = loadImage('assets/simplelogo.png')
+    font = loadFont('assets/acidgroteskregular.otf')
+    bFont = loadFont('assets/acidgroteskbold.otf')
 }
 
 function setup() {
-    
+
   //  createCanvas(1080, 1920)
     createCanvas(windowWidth, windowHeight)
-
     background(255, 0, 255)
     game = new Game()
     noStroke()
@@ -24,7 +22,7 @@ function setup() {
 function draw() {
   game.draw()
 }
-function touchStarted(){
+function touchStarted() {
   game.mouseClicked()
 }
 function mouseClicked() {

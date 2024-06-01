@@ -2,6 +2,7 @@ class Game {
 
   constructor() {
 
+      this.animation = new Animation()
     this.gState = 0
       this.lvl  = 1
       this.div = 3
@@ -18,7 +19,9 @@ class Game {
       this.buttonMenuW = 0
       this.fadeRestart = 0
       this.activateRestart  = false
-      this.button = createButton("enviar");
+      this.button = createButton("enviar")
+      inputField = createInput('tu_correo@massa.com')
+
   }
 
   calculateRandom() {
@@ -271,14 +274,14 @@ class Game {
 
   drawMenu() {
 
-    background(255)
+    background(0)
 
-      image(menu, width/2, height/2, width, height)
+     // image(menu, width/2, height/2, width, height)
 
       push()
-
-      fill(0, 0, 255)
-      this.menuButtonAnimation()
+        this.animation.playAnimation()
+    //  fill(0, 0, 255)
+    //  this.menuButtonAnimation()
 
       pop()
 
@@ -302,7 +305,7 @@ class Game {
 
           if (countOnClick == this.randomCircle) {
             this.lvl++
-              if (this.lvl >= 2) {
+              if (this.lvl >= 12) {
               this.gState = 2
                 this.activateRestart = true
             } else {
