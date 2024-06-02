@@ -2,7 +2,6 @@ class Game {
 
   constructor() {
     this.animation = new Animation()
-    console.log( config )
       this.gState = 0
       this.lvl  = 1
       this.div = 3
@@ -21,8 +20,6 @@ class Game {
       this.activateRestart  = false
       this.canplay = 0
       
-      this.screenTextSize = config.texto
-      this.facilidad = config.facilidad
       this.niveles = config.niveles
 
       this.button = createButton("enviar")
@@ -37,11 +34,10 @@ class Game {
   }
 
   calculateRandom() {
-
     let changed = false
       this.total = this.div * this.div
       this.total = this.total-1
-      this.diff = this.facilidad / (this.lvl + 1)
+      this.diff = config.facilidad / (this.lvl + 1)
 
       if (this.lvl % 2 != 0 && this.lvl % 3 != 0  && changed != true) {
 
@@ -131,7 +127,7 @@ class Game {
       fill(255, 0, 0, this.fadeRestart)
       rect(0, 0, width, height)
       fill(255, this.fadeRestart)
-      textSize(this.screenTextSize)
+      textSize(config.texto)
       textAlign(CENTER, CENTER)
       text(":( ¡PERDISTE!", width/2, height/2)
       text("Gracias por jugar,", width/2, height/2+24)
@@ -150,7 +146,7 @@ class Game {
       rect(0, 0, width, height)
       fill(255)
 
-      textSize(this.screenTextSize)
+      textSize(config.texto)
 
       textAlign(CENTER, CENTER)
 
@@ -233,7 +229,7 @@ class Game {
       textAlign(CENTER, CENTER)
       fill(0, 0, 255)
       rect(width/2, height - height/10, width/4, height/20, 180)
-      textSize(this.screenTextSize*2)
+      textSize(config.texto*2)
       fill(255)
       textFont(bFont)
       fill(0)

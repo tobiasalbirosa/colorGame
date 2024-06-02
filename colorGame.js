@@ -7,7 +7,7 @@ function preload() {
     logoSimple = loadImage('assets/simplelogo.png')
     font = loadFont('assets/acidgroteskregular.otf')
     bFont = loadFont('assets/acidgroteskbold.otf')
-    config = loadJSON('assets/data.json')
+    config = loadJSON('assets/config.json')
 
 }
 

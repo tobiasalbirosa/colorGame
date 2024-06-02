@@ -24,7 +24,7 @@ class Animation {
         this.initialXCircle+=3
       } else {
 
-        this.sizeCircle+=5
+        this.sizeCircle+=1
           if (this.sizeCircle > width/5) {
           this.sizeCircle = width/10
         }
