@@ -1,4 +1,4 @@
-let game, menu, font, bFont, logo, logoSimple, inputField, inputs, buttons
+let game, menu, font, bFont, logo, logoSimple, inputField, inputs, buttons, config
 
 function preload() {
   
@@ -7,6 +7,8 @@ function preload() {
     logoSimple = loadImage('assets/simplelogo.png')
     font = loadFont('assets/acidgroteskregular.otf')
     bFont = loadFont('assets/acidgroteskbold.otf')
+    config = loadJSON('assets/data.json')
+
 }
 
 function setup() {

@@ -1,8 +1,8 @@
 class Game {
 
   constructor() {
-
     this.animation = new Animation()
+    console.log( config )
       this.gState = 0
       this.lvl  = 1
       this.div = 3
@@ -20,7 +20,10 @@ class Game {
       this.fadeRestart = 0
       this.activateRestart  = false
       this.canplay = 0
-      this.screenTextSize = 12
+      
+      this.screenTextSize = config.texto
+      this.facilidad = config.facilidad
+      this.niveles = config.niveles
 
       this.button = createButton("enviar")
       inputField = createInput('tu_correo@massa.com')
@@ -38,7 +41,7 @@ class Game {
     let changed = false
       this.total = this.div * this.div
       this.total = this.total-1
-      this.diff = 255 / (this.lvl + 1)
+      this.diff = this.facilidad / (this.lvl + 1)
 
       if (this.lvl % 2 != 0 && this.lvl % 3 != 0  && changed != true) {
 
@@ -179,11 +182,10 @@ class Game {
   addMail() {
     //
     let val = inputField.value()
-      //console.log(document.getElementsByTagName['input'][0])
-      //  alert(this.input.value())
       saveJSON(val, 'mail.json', true)
       game.restart()
   }
+  
   drawGame() {
 
     background(255)
@@ -316,7 +318,7 @@ class Game {
 
           if (countOnClick == this.randomCircle) {
             this.lvl++
-              if (this.lvl >= 12) {
+              if (this.lvl >= this.niveles) {
 
               this.gState = 2
                 this.activateRestart = true
