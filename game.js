@@ -316,7 +316,7 @@ class Game {
 
           if (countOnClick == this.randomCircle) {
             this.lvl++
-              if (this.lvl >= 3) {
+              if (this.lvl >= 12) {
 
               this.gState = 2
                 this.activateRestart = true
