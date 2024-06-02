@@ -20,8 +20,17 @@ class Game {
       this.fadeRestart = 0
       this.activateRestart  = false
       this.canplay = 0
-           this.button = createButton("enviar")
-                inputField = createInput('tu_correo@massa.com')
+      this.screenTextSize = 12
+
+      this.button = createButton("enviar")
+      inputField = createInput('tu_correo@massa.com')
+      inputs = document.getElementsByTagName("input")
+      buttons = document.getElementsByTagName("button")
+      inputField.position(width/3, height/1.5)
+      this.button.position(inputField.x+inputField.width, height/1.5)
+      this.button.mousePressed(this.addMail)
+      inputs[0].style.display = "none"
+      buttons[0].style.display = "none"
   }
 
   calculateRandom() {
@@ -82,11 +91,13 @@ class Game {
     }
 
     if (this.gState == 0) {
-
-      this.drawMenu()
+      inputs[0].style.display = "none"
+        buttons[0].style.display = "none"
+        this.drawMenu()
     }
     if (this.gState == 1) {
-
+      inputs[0].style.display = "none"
+      buttons[0].style.display = "none"
       this.drawGame()
     }
 
@@ -95,7 +106,8 @@ class Game {
       this.drawWin()
     }
     if (this.gState == 3) {
-
+      inputs[0].style.display = "none"
+      buttons[0].style.display = "none"
       this.drawLoos()
     }
 
@@ -116,7 +128,7 @@ class Game {
       fill(255, 0, 0, this.fadeRestart)
       rect(0, 0, width, height)
       fill(255, this.fadeRestart)
-      textSize(6)
+      textSize(this.screenTextSize)
       textAlign(CENTER, CENTER)
       text(":( ¡PERDISTE!", width/2, height/2)
       text("Gracias por jugar,", width/2, height/2+24)
@@ -125,16 +137,17 @@ class Game {
   }
 
   drawWin() {
-
+      inputs[0].style.display = "block"
+      buttons[0].style.display = "block"
     background(0)
 
       push()
 
-      fill(0, 255, 0, this.fadeRestart)
+      fill(0, 127, 0, this.fadeRestart)
       rect(0, 0, width, height)
       fill(255)
 
-      textSize(6)
+      textSize(this.screenTextSize)
 
       textAlign(CENTER, CENTER)
 
@@ -148,8 +161,8 @@ class Game {
   }
 
   restart() {
-
-    this.gState = 0
+    this.animation.restart()
+      this.gState = 0
       this.lvl  = 1
       this.div = 3
       this.life = 1
@@ -159,11 +172,8 @@ class Game {
       this.activateRestart = false
       this.fadeRestart = 0
       this.randomCircle = this.calculateRandom()
-     console.log("inputs:",inputs[0])
-     inputs[0].style.display = "none"
-     buttons[0].style.display = "none"
-
-
+      inputs[0].style.display = "none"
+      buttons[0].style.display = "none"
   }
 
   addMail() {
@@ -221,11 +231,11 @@ class Game {
       textAlign(CENTER, CENTER)
       fill(0, 0, 255)
       rect(width/2, height - height/10, width/4, height/20, 180)
-      textSize(16)
+      textSize(this.screenTextSize*2)
       fill(255)
       textFont(bFont)
       fill(0)
-      image(logo, width/2, height/8, logo.width/2, logo.height/2)
+      image(logo, width/2, height/8, logo.width/3, logo.height/3)
       text("ENCONTRÁ EL COLOR ", width/2, height/5)
       text("QUE ESTÁ FUERA DE TONO", width/2, height/4)
 
@@ -307,19 +317,9 @@ class Game {
           if (countOnClick == this.randomCircle) {
             this.lvl++
               if (this.lvl >= 3) {
-                   inputs = document.getElementsByTagName("input")
-                   buttons = document.getElementsByTagName("button")
-                   
-                   console.log(buttons)
+
               this.gState = 2
                 this.activateRestart = true
-           
-                inputField.position(width/3, height/1.5)
-                this.button.position(inputField.x+inputField.width, height/1.5)
-                this.button.mousePressed(this.addMail)
-                
-               inputs[0].style.display = "block"
-                 buttons[0].style.display = "block"
             } else {
               this.calculateRandom()
             }
@@ -339,7 +339,7 @@ class Game {
 
   mouseClicked() {
 
-      if (this.gState == 0 && this.canplay > 30) {
+    if (this.gState == 0 && this.canplay > 30) {
       this.canplay  = 0
         this.clickOnMenu()
     }

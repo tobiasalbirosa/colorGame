@@ -1,5 +1,7 @@
 let game, menu, font, bFont, logo, logoSimple, inputField, inputs, buttons
-  function preload() {
+
+function preload() {
+  
     menu = loadImage('assets/menu.png')
     logo = loadImage('assets/logo.png')
     logoSimple = loadImage('assets/simplelogo.png')
@@ -9,7 +11,6 @@ let game, menu, font, bFont, logo, logoSimple, inputField, inputs, buttons
 
 function setup() {
 
-  //  createCanvas(1080, 1920)
     createCanvas(windowWidth, windowHeight)
     background(255, 0, 255)
     game = new Game()
@@ -27,4 +28,7 @@ function touchStarted() {
 }
 function mouseClicked() {
   game.mouseClicked()
+}
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight)
 }

@@ -5,9 +5,13 @@ class Animation {
       this.initialXCircle = width/3-this.sizeCircle
       this.opacity = 0
       this.xLogo = this.initialXCircle
-     // imageMode(CENTER)
   }
-
+  restart() {
+    this.sizeCircle = width/20
+      this.initialXCircle = width/3-this.sizeCircle
+      this.opacity = 0
+      this.xLogo = this.initialXCircle
+  }
   playAnimation() {
     background(0, 0, 255)
       if (this.opacity < 255) {
@@ -21,7 +25,6 @@ class Animation {
       } else {
 
         this.sizeCircle+=5
-          //  initialXCircle = width/2
           if (this.sizeCircle > width/5) {
           this.sizeCircle = width/10
         }
